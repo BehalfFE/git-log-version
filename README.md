@@ -2,9 +2,9 @@
 
 cli tool to create git log based reports and label pivotal stories according to the report
 
-```git-log-version build ```
+```php index.php build ```
 
-Creates the git-log-version.phar package file that is executable
+Creates the git-log-version.phar package file that is executable. Note that you will need a PHP executable and the git-log-version.phar file will be created in the current directory.
 
 ```git-log-version report <git-commit> [delimiter] <git-commit> ```
 
