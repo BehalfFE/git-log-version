@@ -1,0 +1,22 @@
+{
+  "name": "behalf/git-log-version",
+  "description": "Map all commits from a range of commits, parse the log messages, extract the pivotal story IDs and then label those stories with a version label.",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Yonni Mendes",
+      "email": "yonni@behalf.com"
+    }
+  ],
+  "require": {
+    "tivie/php-git-log-parser": "0.1.4",
+    "cilex/cilex": "1.1.0",
+    "clue/phar-composer": "1.0.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "GitLogVersion\\": "src/"
+    }
+  }
+}
