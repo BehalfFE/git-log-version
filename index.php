@@ -14,5 +14,6 @@ if (!$loader = include __DIR__ . '/vendor/autoload.php') {
 $app = new \Cilex\Application('Cilex');
 $app->command(new \GitLogVersion\Command\ReportCommand());
 $app->command(new \GitLogVersion\Command\LabelCommand());
+$app->command(new \GitLogVersion\Command\CommentCommand());
 $app->command(new \GitLogVersion\Command\BuildCommand(__DIR__));
 $app->run();
