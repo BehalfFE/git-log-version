@@ -28,21 +28,28 @@ class CommentCommand extends Command {
         $this
             ->setName('comment')
             ->setDescription('Add a comment onto story IDs found in the log range')
-            ->addOption('input-file', 'i', InputOption::VALUE_OPTIONAL, 'File path to the comment string');
+            ->addOption('input-file', 'i', InputOption::VALUE_OPTIONAL, 'File path to the comment string')
+            ->addOption('string', 's', InputOption::VALUE_OPTIONAL, 'Comment string');
     }
 
 
     protected function execute(InputInterface $input, OutputInterface $output) {
 
-        if ((! $input->hasOption('input-file')) || (!$input->getOption('input-file'))) {
-            throw new \Exception('input-file filepath option must be specified');
-        }
-        $commentFilePath = $input->getOption('input-file');
-        if (! file_exists($commentFilePath)) {
-            throw new \Exception("$commentFilePath not found");
+        if ($input->hasOption('input-file') && $input->getOption('input-file')) {
+            $commentFilePath = $input->getOption('input-file');
+            if (! file_exists($commentFilePath)) {
+                throw new \Exception("$commentFilePath not found");
+            }
+
+            $commentText = file_get_contents($commentFilePath);
+        } else if ($input->hasOption('string') && $input->getOption('string')) {
+            $commentText = $input->getOption('string');
         }
 
-        $commentText = file_get_contents($commentFilePath);
+        if (! $commentText) {
+            throw new \Exception('No comment input, add a comment text with -s or -i options');
+        }
+
 
         $client = new Client();
         $request = $client->createRequest('GET', 'https://www.pivotaltracker.com/services/v5/me', array('X-TrackerToken' => 'be17fcf368af9fa35cfe88b7460d2c67'));
