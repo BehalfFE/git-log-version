@@ -16,7 +16,7 @@ class GitLog {
      * @return array
      */
     public function report($startRange, $endRange) {
-        $console = `git log --no-merges --pretty=format:%s {$startRange}...{$endRange} | uniq -u | tr -s '*'`;
+        $console = `git log --no-merges --pretty=format:%s {$startRange}...{$endRange} | uniq | tr -s '*'`;
 
         $entries = explode("\n", $console);
 
