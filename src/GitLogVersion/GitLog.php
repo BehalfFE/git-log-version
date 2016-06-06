@@ -21,7 +21,7 @@ class GitLog {
         $entries = explode("\n", $console);
 
         $entries = array_filter($entries, function($item){
-            return preg_match('/^\[[\w\-_]+\]/', $item) > 0;
+            return preg_match('/(\[.+\].+)|([A-Z].+\-\d+.+)/', $item) > 0;
         });
 
         return $entries;

@@ -1,6 +1,6 @@
 # git-log-version build
 
-cli tool to create git log based reports and label pivotal stories according to the report
+cli tool to create git log based reports and label pivotal & JIRA stories according to the report
 
 ```php index.php build ```
 
@@ -8,7 +8,7 @@ Creates the git-log-version.phar package file that is executable. Note that you 
 
 ```git-log-version report <git-commit> [delimiter] <git-commit> ```
 
-Report action returns the git log entries that have an opening pivotal id of the form [<story-id>] or [<project-id>-<story-id>]. Merges and other messages are ignored. This operation references the current working directory only.
+Report action returns the git log entries that have an opening pivotal or JIRA id of the form [<story-id>] or [<project-id>-<story-id>]. Merges and other messages are ignored. This operation references the current working directory only.
 
 ```git-log-version label <pivotal-label>```
 
